@@ -12,26 +12,22 @@ import {
   View
 } from 'react-native';
 
-const instructions = Platform.select({
-  ios: 'Press Cmd+R to reload,\n' +
-    'Cmd+D or shake for dev menu',
-  android: 'Double tap R on your keyboard to reload,\n' +
-    'Shake or press menu button for dev menu',
-});
-
 type Props = {};
 export default class App extends Component<Props> {
   render() {
     return (
       <View style={styles.container}>
         <View style={styles.headerView}> 
-          <Text style={styles.text}> hahah</Text>
-          <Text style={{fontWeight: 'bold'}}>
-          I am bold 
-              <Text style={{color: 'red'}}>
-                 and red
-              </Text>
-        </Text>
+          <Text style={styles.text}> #003459 </Text>
+        </View>
+        <View style={styles.h_mView}>
+          <Text style={styles.text}> #028090 </Text>
+        </View>
+        <View style={styles.middleView}>
+          <Text style={styles.text}> #02C39A </Text>
+        </View>
+        <View style={styles.footerView}>
+          <Text style={ {fontSize: 33, color: '#6638F0'}}> #FCE38A </Text>
         </View>
       </View>
     );
@@ -42,16 +38,34 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     justifyContent: 'center',
-    alignItems: 'center',
-    backgroundColor: '#F5FCFF',
+    backgroundColor: 'white',
   },
   headerView: {
     flex: 1,
-    backgroundColor: 'green',
-    width: 200,
+    backgroundColor: '#003459',
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
+  h_mView: {
+    flex: 1,
+    backgroundColor: '#028090',
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
+  middleView: {
+    flex: 1,
+    justifyContent: 'center',
+    alignItems: 'center',
+    backgroundColor: '#02C39A',
+  },
+  footerView: {
+    flex: 1,
+    justifyContent: 'center',
+    alignItems: 'center',
+    backgroundColor:  '#FCE38A',
   },
   text: {
-    fontSize: 66,
-    color: 'blue',
+    fontSize: 33,
+    color: 'white',
   }
 });
