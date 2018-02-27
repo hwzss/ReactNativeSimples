@@ -1,0 +1,3 @@
+rootProject.name = 'StudyFlexBox'
+
+include ':app'
