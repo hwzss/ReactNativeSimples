@@ -1,3 +1,8 @@
+/**
+ * Sample React Native App
+ * https://github.com/facebook/react-native
+ * @flow
+ */
 
 import React, { Component } from 'react';
 import {
@@ -5,7 +10,6 @@ import {
   StyleSheet,
   Text,
   View,
-  AlertIOS,
   TouchableOpacity,
   Image,
   ScrollView,
@@ -14,80 +18,6 @@ import {
   ListViewDataSource,
 } from 'react-native';
 
-//屏幕高宽
-var {width: screen_w, height: screen_h} = Dimensions.get('window')
-
-//自定义view
-class ColorView extends Component {
-  render() {
-    return (
-      <View style={{flex: 1, justifyContent: 'center', alignItems: 'center', backgroundColor: this.props.viewColor, height: this.props.viewHeight, width: this.props.viewWidth}}>
-        <TouchableOpacity  activeOpacity={0.5} onPress={() => this._onPressed()}>
-          <Text style={{fontSize: 33, color: this.props.titleColor}}> {this.props.viewColor} </Text>
-        </TouchableOpacity>        
-      </View>
-    );
-  }
-  _onPressed() {
-    AlertIOS.alert('背景色为:'.concat(this.props.viewColor))
-  }
-}
-
-//图片使用 使用方式:加载本地图片 <ImageView imageName='本地图片名称' style={{width:222, height:333, resizeMode:Image.resizeMode.contain}}></ImageView>
-class ImageView extends Component {
-  constructor(props) {
-    super(props);
-      style = {
-        flex: 1,
-        width: null,
-        height: null,
-        resizeMode: null,
-      };
-  }
-  render() {
-      if (this.props.imageName) {
-        return (
-              <View style={{flex:1}}> 
-                 <Image source={{uri: this.props.imageName}}  style={this.props.style}/>
-              </View>
-        );
-      }else if(this.props.imageUrl) {
-        return (
-              <View style={{flex:1}}> 
-                 <Image source={{uri: this.props.imageUrl}}  style={this.props.style}/>
-              </View>
-        );       
-      }
-  }
-}
-//使用
-  
-//ScrollView学习使用，使用方式: <TestScrollView model='horizontal'></TestScrollView>
-class TestScrollView extends Component {
-  render() {
-    if (this.props.model === 'vertical') {
-      return (
-        //垂直显示
-        <ScrollView>
-          <ColorView viewColor='#003459' titleColor='white' viewHeight={222} />
-          <ColorView viewColor='#028090' titleColor='white' viewHeight={210}/>
-          <ColorView viewColor='#02C39A' titleColor='white' viewHeight={200}/>
-          <ColorView viewColor='#FCE38A' titleColor='#6638F0' viewHeight={180}/>
-        </ScrollView>
-      );
-    }else if (this.props.model === 'horizontal') {
-      return (
-        //水平分也显示
-        <ScrollView  horizontal={true} pagingEnabled={true} style={{flex: 1}}>
-          <ColorView viewColor='#003459' titleColor='white' viewHeight={screen_h} viewWidth={screen_w}/>
-          <ColorView viewColor='#028090' titleColor='white' viewHeight={screen_h} viewWidth={screen_w}/>
-          <ColorView viewColor='#02C39A' titleColor='white' viewHeight={screen_h} viewWidth={screen_w}/>
-          <ColorView viewColor='#FCE38A' titleColor='#6638F0' viewHeight={screen_h} viewWidth={screen_w}/>
-        </ScrollView>
-      );
-    }
-  }
-}
 
 class TestListView extends Component {
     constructor(props) {
@@ -109,10 +39,10 @@ class TestListView extends Component {
   render() {
     return (
       <View style={{
-    flex: 1,
-    flexDirection: 'row',
-    backgroundColor: 'red',
-  }}>
+                  flex: 1,
+                  flexDirection: 'row',
+                  backgroundColor: 'red',
+                  }}>
         <ListView style={{flexDirection: 'row', flexWrap:'wrap'}} dataSource={this.state.dataSource} renderRow={(rowData) => <ColorView viewColor={rowData.color} titleColor={rowData.titleColor} viewWidth={screen_w} viewHeight={222}></ColorView>}/>
       </View>
     );
@@ -137,6 +67,7 @@ class ColorHountView extends Component {
     }
   }
 }
+
 class ColorHuntCell extends Component {
   constructor(props) {
     super(props);
